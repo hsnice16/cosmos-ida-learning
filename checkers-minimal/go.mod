@@ -6,14 +6,15 @@ require (
 	cosmossdk.io/api v0.7.2
 	cosmossdk.io/collections v0.4.0
 	cosmossdk.io/core v0.11.0
+	cosmossdk.io/depinject v1.0.0-alpha.4
 	github.com/cosmos/cosmos-proto v1.0.0-beta.3
 	github.com/cosmos/cosmos-sdk v0.50.1
 	github.com/cosmos/gogoproto v1.4.11
+	github.com/grpc-ecosystem/grpc-gateway v1.16.0
 	google.golang.org/protobuf v1.31.0
 )
 
 require (
-	cosmossdk.io/depinject v1.0.0-alpha.4 // indirect
 	cosmossdk.io/errors v1.0.0 // indirect
 	cosmossdk.io/log v1.2.1 // indirect
 	cosmossdk.io/math v1.2.0 // indirect
@@ -72,7 +73,6 @@ require (
 	github.com/gorilla/mux v1.8.0 // indirect
 	github.com/gorilla/websocket v1.5.0 // indirect
 	github.com/grpc-ecosystem/go-grpc-middleware v1.4.0 // indirect
-	github.com/grpc-ecosystem/grpc-gateway v1.16.0 // indirect
 	github.com/gsterjov/go-libsecret v0.0.0-20161001094733-a6f4afe4910c // indirect
 	github.com/hashicorp/go-hclog v1.5.0 // indirect
 	github.com/hashicorp/go-immutable-radix v1.3.1 // indirect
