@@ -22,6 +22,7 @@ type Keeper struct {
 	// state management
 	Schema collections.Schema
 	Params collections.Item[checkers.Params]
+	StoredGames collections.Map[string, checkers.StoredGame]
 }
 
 // NewKeeper creates a new Keeper instance
@@ -36,6 +37,7 @@ func NewKeeper(cdc codec.BinaryCodec, addressCodec address.Codec, storeService s
 		addressCodec: addressCodec,
 		authority: authority,
 		Params: collections.NewItem(sb, checkers.ParamsKey, "params", codec.CollValue[checkers.Params](cdc)),
+		StoredGames: collections.NewMap(sb, checkers.StoredGamesKey, "storedGames", collections.StringKey,codec.CollValue[checkers.StoredGame](cdc)),
 	}
 
 	schema, err := sb.Build()
