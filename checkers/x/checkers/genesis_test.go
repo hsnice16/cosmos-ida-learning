@@ -15,17 +15,17 @@ func TestGenesis(t *testing.T) {
 		Params: types.DefaultParams(),
 
 		SystemInfo: &types.SystemInfo{
-		NextId: 9,
-},
+			NextId: 9,
+		},
 		StoredGameList: []types.StoredGame{
-		{
-			Index: "0",
-},
-		{
-			Index: "1",
-},
-	},
-	// this line is used by starport scaffolding # genesis/test/state
+			{
+				Index: "0",
+			},
+			{
+				Index: "1",
+			},
+		},
+		// this line is used by starport scaffolding # genesis/test/state
 	}
 
 	k, ctx := keepertest.CheckersKeeper(t)
@@ -37,6 +37,6 @@ func TestGenesis(t *testing.T) {
 	nullify.Fill(got)
 
 	require.Equal(t, genesisState.SystemInfo, got.SystemInfo)
-require.ElementsMatch(t, genesisState.StoredGameList, got.StoredGameList)
-// this line is used by starport scaffolding # genesis/test/assert
+	require.ElementsMatch(t, genesisState.StoredGameList, got.StoredGameList)
+	// this line is used by starport scaffolding # genesis/test/assert
 }

@@ -4,10 +4,10 @@ import (
 	"strconv"
 	"testing"
 
-	"github.com/alice/checkers/x/checkers/keeper"
-	"github.com/alice/checkers/x/checkers/types"
 	keepertest "github.com/alice/checkers/testutil/keeper"
 	"github.com/alice/checkers/testutil/nullify"
+	"github.com/alice/checkers/x/checkers/keeper"
+	"github.com/alice/checkers/x/checkers/types"
 	sdk "github.com/cosmos/cosmos-sdk/types"
 	"github.com/stretchr/testify/require"
 )
@@ -19,7 +19,7 @@ func createNStoredGame(keeper *keeper.Keeper, ctx sdk.Context, n int) []types.St
 	items := make([]types.StoredGame, n)
 	for i := range items {
 		items[i].Index = strconv.Itoa(i)
-        
+
 		keeper.SetStoredGame(ctx, items[i])
 	}
 	return items
@@ -30,8 +30,7 @@ func TestStoredGameGet(t *testing.T) {
 	items := createNStoredGame(keeper, ctx, 10)
 	for _, item := range items {
 		rst, found := keeper.GetStoredGame(ctx,
-		    item.Index,
-            
+			item.Index,
 		)
 		require.True(t, found)
 		require.Equal(t,
@@ -45,12 +44,10 @@ func TestStoredGameRemove(t *testing.T) {
 	items := createNStoredGame(keeper, ctx, 10)
 	for _, item := range items {
 		keeper.RemoveStoredGame(ctx,
-		    item.Index,
-            
+			item.Index,
 		)
 		_, found := keeper.GetStoredGame(ctx,
-		    item.Index,
-            
+			item.Index,
 		)
 		require.False(t, found)
 	}

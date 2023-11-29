@@ -47,4 +47,3 @@ func TestSystemInfoQuery(t *testing.T) {
 		})
 	}
 }
-

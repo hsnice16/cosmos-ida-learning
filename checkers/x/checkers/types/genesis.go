@@ -13,8 +13,8 @@ func DefaultGenesis() *GenesisState {
 		SystemInfo: SystemInfo{
 			NextId: uint64(DefaultIndex),
 		},
-StoredGameList: []StoredGame{},
-// this line is used by starport scaffolding # genesis/types/default
+		StoredGameList: []StoredGame{},
+		// this line is used by starport scaffolding # genesis/types/default
 		Params: DefaultParams(),
 	}
 }
@@ -23,16 +23,16 @@ StoredGameList: []StoredGame{},
 // failure.
 func (gs GenesisState) Validate() error {
 	// Check for duplicated index in storedGame
-storedGameIndexMap := make(map[string]struct{})
+	storedGameIndexMap := make(map[string]struct{})
 
-for _, elem := range gs.StoredGameList {
-	index := string(StoredGameKey(elem.Index))
-	if _, ok := storedGameIndexMap[index]; ok {
-		return fmt.Errorf("duplicated index for storedGame")
+	for _, elem := range gs.StoredGameList {
+		index := string(StoredGameKey(elem.Index))
+		if _, ok := storedGameIndexMap[index]; ok {
+			return fmt.Errorf("duplicated index for storedGame")
+		}
+		storedGameIndexMap[index] = struct{}{}
 	}
-	storedGameIndexMap[index] = struct{}{}
-}
-// this line is used by starport scaffolding # genesis/types/validate
+	// this line is used by starport scaffolding # genesis/types/validate
 
 	return gs.Params.Validate()
 }

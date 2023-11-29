@@ -1,7 +1,7 @@
 package keeper_test
 
 import (
-    "strconv"
+	"strconv"
 	"testing"
 
 	sdk "github.com/cosmos/cosmos-sdk/types"
@@ -10,9 +10,9 @@ import (
 	"google.golang.org/grpc/codes"
 	"google.golang.org/grpc/status"
 
-	"github.com/alice/checkers/x/checkers/types"
-	"github.com/alice/checkers/testutil/nullify"
 	keepertest "github.com/alice/checkers/testutil/keeper"
+	"github.com/alice/checkers/testutil/nullify"
+	"github.com/alice/checkers/x/checkers/types"
 )
 
 // Prevent strconv unused error
@@ -29,28 +29,25 @@ func TestStoredGameQuerySingle(t *testing.T) {
 		err      error
 	}{
 		{
-			desc:     "First",
-			request:  &types.QueryGetStoredGameRequest{
-			    Index: msgs[0].Index,
-                
+			desc: "First",
+			request: &types.QueryGetStoredGameRequest{
+				Index: msgs[0].Index,
 			},
 			response: &types.QueryGetStoredGameResponse{StoredGame: msgs[0]},
 		},
 		{
-			desc:     "Second",
-			request:  &types.QueryGetStoredGameRequest{
-			    Index: msgs[1].Index,
-                
+			desc: "Second",
+			request: &types.QueryGetStoredGameRequest{
+				Index: msgs[1].Index,
 			},
 			response: &types.QueryGetStoredGameResponse{StoredGame: msgs[1]},
 		},
 		{
-			desc:    "KeyNotFound",
+			desc: "KeyNotFound",
 			request: &types.QueryGetStoredGameRequest{
-			    Index:strconv.Itoa(100000),
-                
+				Index: strconv.Itoa(100000),
 			},
-			err:     status.Error(codes.NotFound, "not found"),
+			err: status.Error(codes.NotFound, "not found"),
 		},
 		{
 			desc: "InvalidRequest",
@@ -94,9 +91,9 @@ func TestStoredGameQueryPaginated(t *testing.T) {
 			require.NoError(t, err)
 			require.LessOrEqual(t, len(resp.StoredGame), step)
 			require.Subset(t,
-            	nullify.Fill(msgs),
-            	nullify.Fill(resp.StoredGame),
-            )
+				nullify.Fill(msgs),
+				nullify.Fill(resp.StoredGame),
+			)
 		}
 	})
 	t.Run("ByKey", func(t *testing.T) {
@@ -107,9 +104,9 @@ func TestStoredGameQueryPaginated(t *testing.T) {
 			require.NoError(t, err)
 			require.LessOrEqual(t, len(resp.StoredGame), step)
 			require.Subset(t,
-            	nullify.Fill(msgs),
-            	nullify.Fill(resp.StoredGame),
-            )
+				nullify.Fill(msgs),
+				nullify.Fill(resp.StoredGame),
+			)
 			next = resp.Pagination.NextKey
 		}
 	})

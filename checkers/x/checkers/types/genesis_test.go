@@ -19,39 +19,39 @@ func TestGenesisState_Validate(t *testing.T) {
 			valid:    true,
 		},
 		{
-			desc:     "valid genesis state",
+			desc: "valid genesis state",
 			genState: &types.GenesisState{
 
-SystemInfo: &types.SystemInfo{
-		NextId: 39,
-},
-StoredGameList: []types.StoredGame{
-	{
-		Index: "0",
-},
-	{
-		Index: "1",
-},
-},
-// this line is used by starport scaffolding # types/genesis/validField
+				SystemInfo: types.SystemInfo{
+					NextId: 39,
+				},
+				StoredGameList: []types.StoredGame{
+					{
+						Index: "0",
+					},
+					{
+						Index: "1",
+					},
+				},
+				// this line is used by starport scaffolding # types/genesis/validField
 			},
 			valid: true,
 		},
 		{
-	desc:     "duplicated storedGame",
-	genState: &types.GenesisState{
-		StoredGameList: []types.StoredGame{
-			{
-				Index: "0",
-},
-			{
-				Index: "0",
-},
+			desc: "duplicated storedGame",
+			genState: &types.GenesisState{
+				StoredGameList: []types.StoredGame{
+					{
+						Index: "0",
+					},
+					{
+						Index: "0",
+					},
+				},
+			},
+			valid: false,
 		},
-	},
-	valid:    false,
-},
-// this line is used by starport scaffolding # types/genesis/testcase
+		// this line is used by starport scaffolding # types/genesis/testcase
 	} {
 		t.Run(tc.desc, func(t *testing.T) {
 			err := tc.genState.Validate()
@@ -67,8 +67,8 @@ StoredGameList: []types.StoredGame{
 func TestDefaultGenesisState_ExpectedInitialNextId(t *testing.T) {
 	require.EqualValues(t, &types.GenesisState{
 		StoredGameList: []types.StoredGame{},
-		SystemInfo: types.SystemInfo{uint64(1)},
-	}, 
-	types.DefaultGenesis(),
-)
+		SystemInfo:     types.SystemInfo{uint64(1)},
+	},
+		types.DefaultGenesis(),
+	)
 }

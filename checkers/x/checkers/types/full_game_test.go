@@ -12,16 +12,16 @@ import (
 
 const (
 	alice = testutil.Alice
-	bob = testutil.Bob
+	bob   = testutil.Bob
 )
 
 func GetStoredGame1() types.StoredGame {
-	return types.StoredGame {
+	return types.StoredGame{
 		Black: alice,
-		Red: bob,
+		Red:   bob,
 		Index: "1",
 		Board: rules.New().String(),
-		Turn: "b",
+		Turn:  "b",
 	}
 }
 

@@ -12,14 +12,14 @@ import (
 	"github.com/alice/checkers/testutil/network"
 	"github.com/alice/checkers/testutil/nullify"
 	"github.com/alice/checkers/x/checkers/client/cli"
-    "github.com/alice/checkers/x/checkers/types"
+	"github.com/alice/checkers/x/checkers/types"
 )
 
 func networkWithSystemInfoObjects(t *testing.T) (*network.Network, types.SystemInfo) {
 	t.Helper()
 	cfg := network.DefaultConfig()
 	state := types.GenesisState{}
-    require.NoError(t, cfg.Codec.UnmarshalJSON(cfg.GenesisState[types.ModuleName], &state))
+	require.NoError(t, cfg.Codec.UnmarshalJSON(cfg.GenesisState[types.ModuleName], &state))
 
 	systemInfo := types.SystemInfo
 	nullify.Fill(&systemInfo)
@@ -70,4 +70,3 @@ func TestShowSystemInfo(t *testing.T) {
 		})
 	}
 }
-
